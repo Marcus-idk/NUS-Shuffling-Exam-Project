@@ -1,0 +1,89 @@
+<html> 
+    <head>
+        <title>Shuffling NUS modules' exams</title>
+        <meta charset="utf-8">
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                text-align: center;
+                overflow-x: hidden;
+                width: 70%;
+                margin: 50px auto 0px;
+            }
+            p {
+                width: 70%;
+                margin: 0 auto;
+                text-align: center;
+                font-size: 1.3vw;
+            }
+            h1 {
+                font-size: 40px;
+            }
+            .inputFiles {
+                width: 50%;
+                margin: 1vw auto;
+                padding: 0.7vw;
+                display: flex;
+                justify-content: space-around;
+                flex-direction: row;
+                text-align: center;
+                border: 1px black solid;
+            }
+            .inputFiles input {
+                display: inline-block;
+                text-align: center;
+            }
+            .btn {
+                appearance: none;
+                -webkit-appearance: none;
+                font-family: sans-serif;
+                cursor: pointer;
+                padding: 12px;
+                min-width: 100px;
+                border: 0px;
+                -webkit-transition: background-color 100ms linear;
+                -ms-transition: background-color 100ms linear;
+                transition: background-color 100ms linear;
+                background: #3498db;
+                color: #ffffff;
+                border-radius: 30px;
+            }
+            .btn:hover {
+                background: #2980b9;
+                color: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>Shuffling NUS Mods</h1>
+            <p>$$\text{To check if the algorithm works, we can make use of a simple metric as follows.}$$</p>
+            <p>$$\text{Let } E_1 \text{ be the set of modules that an arbitrary student is taking that semester.}$$</p>
+            <p>$$\text{Let } E_2 \text{ be the set of sets of modules taken by multiple students.}$$</p>
+            <p>$$\text{Let } s_i, e_i \text{ represent the starting and ending times of a particular module.}$$</p>
+            <p>$$f(E_1) = \frac{1}{m-1}\sum^{m-1}_{i=1}(start_{i+1} - end_i)$$</p>
+            <p>$$\text{Then, } h(E_2) = \frac{1}{t}\sum^t_{i=1}f(s_i)$$</p>
+            <p>$$\text{In simplier terms, f(E) represents the average "time" between modules for 1 student}$$</p>
+            <p>$$\text{while } h(E) \text{ represents the average "time" between modules for x students, }x \ge 1.$$</p>
+            <div class="inputFiles">
+                <label>Module Exam TimeTable (JSON)</label>
+                <input type="file" id="inputModuleExamTimes" required>
+            </div>
+            <div class="inputFiles">
+                <label>Student & The modules they are taking (Array of Arrays)</label>
+                <input type="file" id="studentsModules" required>
+            </div>
+            <input type="submit" class="btn" id="shuffle" value="See Results">
+            <br>
+            <br>
+            <h2>According to the metric,</h2>
+            <p id="beforeShuffle">$$\text{Metric Value }\textbf{Before} \text{ Shuffling: } $$</p>
+            <p id="afterShuffle">$$\text{Metric Value }\textbf{After} \text{ Shuffling: } $$</p>
+        </main>
+        <script type="module" src="index.js"></script>
+    </body>
+</html>
