@@ -1,1 +1,146 @@
-{\rtf1}
+/* CSS reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Fonts */
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    text-align: center;
+}
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 10px 0px;
+}
+p {
+    font-size: 1rem;
+    margin: 5px;
+    line-height: 1.3rem;
+}
+strong {
+    font-weight: 700;
+}
+/* Input Div */
+#inputSection {
+    width: 90%;
+    margin: 0 auto;
+    border: 2px black solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.information {
+    text-align: left;
+    margin: 40px;
+}
+.code {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    font-family: "Courier New", Courier, monospace;
+    margin: 5px 0px;
+}
+/* Actual Inputs */
+.file-input-container {
+    position: relative;
+    margin: 20px 0;
+}
+input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+label {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+.underline {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: blue;
+    transition: width 0.2s ease-in-out;
+}
+label:hover + .underline,
+input[type="file"]:focus + label + .underline {
+    width: 100%;
+}
+.file-name {
+    margin-left: 10px;
+    font-size: 16px;
+    font-style: italic;
+}
+/* Downloads */
+.download-link {
+    display: inline-block;
+    padding: 5px;
+    background-color: #2196F3;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.download-link:hover {
+    background-color: #0D47A1;
+}
+/* Spacing */
+#title {
+    margin: 50px 0;
+}

@@ -1,89 +1,53 @@
 <html> 
     <head>
-        <title>Shuffling NUS modules' exams</title>
+        <title>NUS Exam Optimizer</title>
         <meta charset="utf-8">
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
-        <style>
-            * {
-                padding: 0;
-                margin: 0;
-            }
-            body {
-                text-align: center;
-                overflow-x: hidden;
-                width: 70%;
-                margin: 50px auto 0px;
-            }
-            p {
-                width: 70%;
-                margin: 0 auto;
-                text-align: center;
-                font-size: 1.3vw;
-            }
-            h1 {
-                font-size: 40px;
-            }
-            .inputFiles {
-                width: 50%;
-                margin: 1vw auto;
-                padding: 0.7vw;
-                display: flex;
-                justify-content: space-around;
-                flex-direction: row;
-                text-align: center;
-                border: 1px black solid;
-            }
-            .inputFiles input {
-                display: inline-block;
-                text-align: center;
-            }
-            .btn {
-                appearance: none;
-                -webkit-appearance: none;
-                font-family: sans-serif;
-                cursor: pointer;
-                padding: 12px;
-                min-width: 100px;
-                border: 0px;
-                -webkit-transition: background-color 100ms linear;
-                -ms-transition: background-color 100ms linear;
-                transition: background-color 100ms linear;
-                background: #3498db;
-                color: #ffffff;
-                border-radius: 30px;
-            }
-            .btn:hover {
-                background: #2980b9;
-                color: #ffffff;
-            }
-        </style>
+        <link href="index.css" rel="stylesheet">
     </head>
     <body>
-        <main>
-            <h1>Shuffling NUS Mods</h1>
-            <p>$$\text{To check if the algorithm works, we can make use of a simple metric as follows.}$$</p>
-            <p>$$\text{Let } E_1 \text{ be the set of modules that an arbitrary student is taking that semester.}$$</p>
-            <p>$$\text{Let } E_2 \text{ be the set of sets of modules taken by multiple students.}$$</p>
-            <p>$$\text{Let } s_i, e_i \text{ represent the starting and ending times of a particular module.}$$</p>
-            <p>$$f(E_1) = \frac{1}{m-1}\sum^{m-1}_{i=1}(start_{i+1} - end_i)$$</p>
-            <p>$$\text{Then, } h(E_2) = \frac{1}{t}\sum^t_{i=1}f(s_i)$$</p>
-            <p>$$\text{In simplier terms, f(E) represents the average "time" between modules for 1 student}$$</p>
-            <p>$$\text{while } h(E) \text{ represents the average "time" between modules for x students, }x \ge 1.$$</p>
-            <div class="inputFiles">
-                <label>Module Exam TimeTable (JSON)</label>
-                <input type="file" id="inputModuleExamTimes" required>
+        <h1 id="title">NUS Exam Optimizer</h1>
+        <p>According to student concerns, important exams are set too close together. This method will maximize the time between these examinations as much as feasible.</p>
+        <br>
+        <h2>Please provide the following inputs:</h2>
+        <br>
+        <div id="inputSection">
+            <div class="inputDivs" id="inputLeft">
+                <h3>2D Arrays of modules</h3>
+                <p>This data will be represented in a 2D array, and every subarray will represent the modules a student has taken together.</p>
+                <div class="information">
+                    <p>Suppose our dataset contains of students A, B, C</p>
+                    <p>Student A takes <strong>CS1231S, CS1101S, MA2001</strong></p>
+                    <p>Student B takes <strong>MA2108, CS3230, CS3233</strong></p>
+                    <p>Student C takes <strong>CS3243, CS3244</strong></p>
+                    <p>The information would be displayed like this: </p>
+                    <p class="code">[[CS1231S, CS1101S, MA2001], [MA2108, CS3230, CS3233], [CS3243, CS3244]]</p>
+                </div>
+                <p>This can be extended to as many students as required. This data is required to calculate the average spread of exams amongst students before and after the shuffle.</p>
+                <div class="file-input-container">
+                    <input type="file" id="file-input1">
+                    <label for="file-input1">Choose file(s)</label>
+                    <span class="file-name1">No file chosen</span>
+                    <span class="underline"></span>
+                </div>
             </div>
-            <div class="inputFiles">
-                <label>Student & The modules they are taking (Array of Arrays)</label>
-                <input type="file" id="studentsModules" required>
+            <div class="inputDivs" id="inputRight">
+                <h3>Module Data</h3>
+                <p>This data will be represented in an array where every element is a JSON file representing a certain module, similar to that of NUSMODS API.</p>
+                <div class="information">
+                    <p>Suppose I have the data for modules <a href="/JSONExamples/CS3230.json" download class="download-link">CS3230 JSON</a> and <a href="/JSONExamples/MA1521.json" download class="download-link">MA1521 JSON</a></p>
+                    <p>The final data would look something like this: </p>
+                    <img src="images/ModuleJSON.jpeg" width="500">
+                </div>
+                <p>This can be extended to as many students as required. This data is required to calculate the average spread of exams amongst students before and after the shuffle.</p>
+                <div class="file-input-container">
+                    <input type="file" id="file-input2">
+                    <label for="file-input2">Choose file(s)</label>
+                    <span class="file-name2">No file chosen</span>
+                    <span class="underline"></span>
+                </div>
             </div>
-            <input type="submit" class="btn" id="shuffle" value="See Results">
-            <br>
-            <br>
-            <h2>According to the metric,</h2>
-            <p id="beforeShuffle">$$\text{Metric Value }\textbf{Before} \text{ Shuffling: } $$</p>
-            <p id="afterShuffle">$$\text{Metric Value }\textbf{After} \text{ Shuffling: } $$</p>
-        </main>
+        </div>
         <script type="module" src="index.js"></script>
+        <script src="deco.js"></script>
     </body>
 </html>
