@@ -24,8 +24,8 @@
                 </div>
                 <p>This can be extended to as many students as required. This data is required to calculate the average spread of exams amongst students before and after the shuffle.</p>
                 <div class="file-input-container">
-                    <input type="file" id="file-input1">
-                    <label for="file-input1">Choose file(s)</label>
+                    <input type="file" id="file-input1" required>
+                    <label for="file-input1">Choose file</label>
                     <span class="file-name1">No file chosen</span>
                     <span class="underline"></span>
                 </div>
@@ -40,12 +40,32 @@
                 </div>
                 <p>This can be extended to as many students as required. This data is required to calculate the average spread of exams amongst students before and after the shuffle.</p>
                 <div class="file-input-container">
-                    <input type="file" id="file-input2">
-                    <label for="file-input2">Choose file(s)</label>
+                    <input type="file" id="file-input2" required>
+                    <label for="file-input2">Choose file</label>
                     <span class="file-name2">No file chosen</span>
                     <span class="underline"></span>
                 </div>
             </div>
+        </div>
+        <div id="metric">
+            <p>We need to define what it means for a student's exam to be spread out.
+                A metric that we could use is simply the average number of days between consecutive exams for all students.
+                The metric as shown below will take in a student's schedule and find the average number of days.
+            </p>
+            <img src="images/metric1.png">
+            <p>Since we are optimizing the exam schedule for more than 1 student, lets define another metric that
+                finds the total average of days between consecutive exams for all students.
+            </p>
+            <img src="images/metric2.png">
+        </div>
+        <p>If everything above is already filled, kindly use the shuffle option to optimize the exam schedule!</p>
+        <button class="bubble-button">Shuffle</button>
+        <div id="results">
+            <div id="resultsMetric">
+                <p>Metric with previous exam schedule: <strong class="red"></strong></p>
+                <p>Metric with new exam schedule: <strong class="green"></strong></p>
+            </div>
+            <a href="/" download class="download-link center">Download new exam schedule!</a>
         </div>
         <script type="module" src="index.js"></script>
         <script src="deco.js"></script>
